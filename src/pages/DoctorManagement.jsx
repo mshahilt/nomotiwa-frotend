@@ -14,7 +14,7 @@ function DoctorManagement() {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const { data } = await axios.get('http://localhost:8080/api/hospital/doctors');
+        const { data } = await axios.get('https://nomotiwa-backend.onrender.comapi/hospital/doctors');
         console.log(data)
         setDoctors(data);
       } catch (error) {
@@ -28,7 +28,7 @@ function DoctorManagement() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:8080/api/hospital/doctors', {
+      const { data } = await axios.post('https://nomotiwa-backend.onrender.com/api/hospital/doctors', {
         name: formData.name,
         specialization: formData.specialization,
       });

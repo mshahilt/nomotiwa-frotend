@@ -11,7 +11,7 @@ const TokenDisplay = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8080/api/hospital/doctors");
+        const { data } = await axios.get("https://nomotiwa-backend.onrender.com/api/hospital/doctors");
         setDoctors(data);
       } catch (error) {
         toast.error("Failed to fetch doctors");
@@ -26,7 +26,7 @@ const TokenDisplay = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:8080/api/token-management/increment-token", {
+      const response = await axios.post("https://nomotiwa-backend.onrender.com/api/token-management/increment-token", {
         doctorId: selectedDoctor,
       });
       setToken(response.data.token);

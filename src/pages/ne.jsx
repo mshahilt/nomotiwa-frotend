@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import axiosInstance from "../api/axiosInstance.js";
 
-const socket = io("http://localhost:8080");
+const socket = io("https://nomotiwa-backend.onrender.com/");
 
 function User() {
   const [doctorTokens, setDoctorTokens] = useState({});
