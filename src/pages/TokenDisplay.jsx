@@ -2,6 +2,7 @@ import { Edit2, UserCheck } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from 'react-hot-toast';
+import axiosInstance from "../api/axiosInstance.js";
 
 const TokenDisplay = () => {
   const [doctors, setDoctors] = useState([]);
@@ -11,7 +12,7 @@ const TokenDisplay = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const { data } = await axios.get("https://nomotiwa-backend.onrender.com/api/hospital/doctors");
+        const { data } = await axiosInstance.get("api/hospital/doctors");
         setDoctors(data);
       } catch (error) {
         toast.error("Failed to fetch doctors");
@@ -26,7 +27,7 @@ const TokenDisplay = () => {
       return;
     }
     try {
-      const response = await axios.post("https://nomotiwa-backend.onrender.com/api/token-management/increment-token", {
+      const response = await axiosInstance.post("api/token-management/increment-token", {
         doctorId: selectedDoctor,
       });
       setToken(response.data.token);

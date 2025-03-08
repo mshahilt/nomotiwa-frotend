@@ -23,7 +23,7 @@ function TokenBooking() {
 
   const fetchDoctors = async () => {
     try {
-      const { data } = await axiosInstance.get('/api/hospital/doctors');
+      const { data } = await axiosInstance.get('api/hospital/doctors');
       setDoctors(data);
     } catch (error) {
       toast.error(error.response?.data?.message || 'Failed to fetch doctors');

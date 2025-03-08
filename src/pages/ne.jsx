@@ -10,7 +10,7 @@ function User() {
 
   const fetchDoctors = async () => {
     try {
-      const { data } = await axiosInstance.get('/api/hospital/doctors');
+      const { data } = await axiosInstance.get('api/hospital/doctors');
       setDoctors(data);
       
       const initialTokens = {};

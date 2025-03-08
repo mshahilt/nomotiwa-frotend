@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { Plus, Edit2, UserCheck } from 'lucide-react';
 import axios from 'axios';
+import axiosInstance from '../api/axiosInstance.js';
 
 function DoctorManagement() {
   const [doctors, setDoctors] = useState([]);
@@ -14,7 +15,7 @@ function DoctorManagement() {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const { data } = await axios.get('https://nomotiwa-backend.onrender.comapi/hospital/doctors');
+        const { data } = await axiosInstance.get('api/hospital/doctors');
         console.log(data)
         setDoctors(data);
       } catch (error) {
@@ -28,7 +29,7 @@ function DoctorManagement() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('https://nomotiwa-backend.onrender.com/api/hospital/doctors', {
+      const { data } = await axiosInstance.post('api/hospital/doctors', {
         name: formData.name,
         specialization: formData.specialization,
       });
